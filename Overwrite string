@@ -1,0 +1,22 @@
+public class Solution {
+    public String solution(String my_string, String overwrite_string, int s) {
+        // 문자열 수정
+        StringBuilder result = new StringBuilder();
+        result.append(my_string, 0, s).append(overwrite_string);
+        if (s + overwrite_string.length() < my_string.length()) {
+            result.append(my_string.substring(s + overwrite_string.length()));
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+
+        String my_string = "Hello, World!";
+        String overwrite_string = "Java";
+        int s = 7;
+        String result = solution.solution(my_string, overwrite_string, s);
+        System.out.println(result);
+    }
+}
