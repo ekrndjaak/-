@@ -1,0 +1,19 @@
+class Solution {
+    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
+        int newNumer = numer1 * denom2 + numer2 * denom1;
+        int newDenom = denom1 * denom2;
+        
+        int gcd = findGCD(newNumer, newDenom);
+        
+        int[] answer = {newNumer / gcd, newDenom / gcd};
+        return answer;
+    }
+    
+    private int findGCD(int a, int b){
+        if (b == 0){
+            return a;
+        } else{
+            return findGCD(b, a % b);
+        }
+    }
+}
