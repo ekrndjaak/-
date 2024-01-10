@@ -1,0 +1,9 @@
+class Solution {
+    public int solution(String message) {
+        int answer = 0;
+        int messageLength = message.length();
+        
+        answer = messageLength * 2;
+        return answer;
+    }
+}
