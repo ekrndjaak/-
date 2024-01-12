@@ -1,0 +1,12 @@
+class Solution {
+    public int solution(int a, int b) {
+        // a + b 계산
+        int result1 = Integer.parseInt(Integer.toString(a) + Integer.toString(b));
+
+        // 2 * a * b 계산
+        int result2 = 2 * a * b;
+
+        // 더 큰 값 반환
+        return Math.max(result1, result2);
+    }
+}
