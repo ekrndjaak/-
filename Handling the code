@@ -1,0 +1,37 @@
+class Solution {
+    public String solution(String code) {
+        String answer = "";
+        StringBuilder ret = new StringBuilder();
+        int mode = 0;
+        int n = code.length();
+        
+        for (int idx = 0; idx < n; idx++){
+            char currentChar = code.charAt(idx);
+            
+            if(mode == 0) {
+                if(currentChar != '1'){
+                    if(idx % 2 == 0){
+                        ret.append(currentChar);
+                    }
+                } else {
+                    mode = 1;
+                }
+            }else {
+                if (currentChar != '1'){
+                    if(idx % 2 == 1){
+                        ret.append(currentChar);
+                    }
+                }else{
+                    mode = 0;
+                }
+            }
+        }
+        
+        if(ret.length() == 0){
+            return "EMPTY";
+        }
+        
+        answer = ret.toString();
+        return answer;
+    }
+}
