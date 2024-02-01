@@ -1,0 +1,21 @@
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int[] array) {
+        Arrays.sort(array);
+
+        // 중앙값의 인덱스 계산
+        int middleIndex = array.length / 2;
+
+        // 배열 크기가 홀수인 경우
+        if (array.length % 2 != 0) {
+            return array[middleIndex];
+        }
+        // 배열 크기가 짝수인 경우
+        else {
+            int middleValue1 = array[middleIndex - 1];
+            int middleValue2 = array[middleIndex];
+            return (middleValue1 + middleValue2) / 2;
+        }
+    }
+}
