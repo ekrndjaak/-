@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public int[] solution(int l, int r) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int i = l; i <= r; i++) {
+            if (isZeroFiveNumber(i)) {
+                result.add(i);
+            }
+        }
+
+        if (result.isEmpty()) {
+            return new int[]{-1};
+        }
+
+        Collections.sort(result);
+        return result.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    // 정수가 "0"과 "5"로만 이루어진 숫자인지 확인하는 메소드
+    private boolean isZeroFiveNumber(int num) {
+        String strNum = String.valueOf(num);
+        return strNum.matches("[05]+");
+    }
+}
