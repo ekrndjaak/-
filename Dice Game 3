@@ -1,0 +1,59 @@
+class Solution {
+    public int solution(int a, int b, int c, int d) {
+        int[] counts = new int[7]; // 각 숫자의 등장 횟수를 저장하는 배열
+
+        // 주사위 결과에 대한 등장 횟수 계산
+        counts[a]++;
+        counts[b]++;
+        counts[c]++;
+        counts[d]++;
+
+        // 네 주사위가 모두 같은 숫자인 경우
+        for (int i = 1; i <= 6; i++) {
+            if (counts[i] == 4) {
+                return 1111 * i;
+            }
+        }
+
+        // 세 주사위가 같은 숫자이고 나머지 하나가 다른 경우
+        for (int i = 1; i <= 6; i++) {
+            if (counts[i] == 3) {
+                for (int j = 1; j <= 6; j++) {
+                    if (counts[j] == 1 && i != j) {
+                        return (10 * i + j) * (10 * i + j);
+                    }
+                }
+            }
+        }
+
+        // 두 쌍의 주사위가 같은 숫자인 경우
+        for (int i = 1; i <= 6; i++) {
+            if (counts[i] == 2) {
+                for (int j = 1; j <= 6; j++) {
+                    if (counts[j] == 2 && i != j) {
+                        return (i + j) * Math.abs(i - j);
+                    }
+                }
+            }
+        }
+
+        // 두 주사위가 같은 숫자이고 나머지 두 주사위가 다른 숫자인 경우
+        for (int i = 1; i <= 6; i++) {
+            if (counts[i] == 2) {
+                for (int j = 1; j <= 6; j++) {
+                    if (counts[j] == 1 && i != j) {
+                        for (int k = 1; k <= 6; k++) {
+                            if (counts[k] == 1 && i != k && j != k) {
+                                return j * k;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 네 주사위가 모두 다른 숫자인 경우
+        int min = Math.min(Math.min(a, b), Math.min(c, d));
+        return min;
+    }
+}
