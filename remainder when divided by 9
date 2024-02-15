@@ -1,0 +1,26 @@
+class Solution {
+    public int solution(String number) {
+        int sumOfDigits = 0;
+
+        // 각 자리 숫자의 합을 구함
+        for (char digitChar : number.toCharArray()) {
+            int digit = Character.getNumericValue(digitChar);
+            sumOfDigits += digit;
+        }
+
+        // 합을 9로 나눈 나머지를 반환
+        return sumOfDigits % 9;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // 예제 1
+        int result1 = solution.solution("123");
+        System.out.println(result1); // 출력 결과: 6
+
+        // 예제 2
+        int result2 = solution.solution("78720646226947352489");
+        System.out.println(result2); // 출력 결과: 2
+    }
+}
