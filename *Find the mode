@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int solution(int[] array) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        // 배열 내 각 숫자의 빈도수를 세기
+        for (int num : array) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        int maxCount = 0;
+        int mode = 0;
+        boolean isMultipleModes = false;
+
+        // 최빈값 찾기
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            int currentCount = entry.getValue();
+            
+            if (currentCount > maxCount) {
+                maxCount = currentCount;
+                mode = entry.getKey();
+                isMultipleModes = false;
+            } else if (currentCount == maxCount) {
+                // 최빈값이 여러 개인 경우
+                isMultipleModes = true;
+            }
+        }
+
+        // 최빈값이 여러 개인 경우 -1 반환
+        return isMultipleModes ? -1 : mode;
+    }
+}
