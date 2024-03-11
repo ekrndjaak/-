@@ -1,0 +1,15 @@
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] numbers, int num1, int num2) {
+        if (num1 < 0 || num1 >= numbers.length || num2 < 0 || num2 >= numbers.length || num1 > num2) {
+            return new int[0];
+        }
+
+        int subarrayLength = num2 - num1 + 1;
+
+        int[] answer = Arrays.copyOfRange(numbers, num1, num1 + subarrayLength);
+
+        return answer;
+    }
+}
